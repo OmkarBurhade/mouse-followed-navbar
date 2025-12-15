@@ -11,14 +11,27 @@
      height: 100%;
  }
 
- :root {}
+ @property --hover {
+     syntax: "<length>";
+     inherits: false;
+     initial-value: 7vw;
+ }
 
  body {
-     background-color: black;
+     background-color: white;
+     anchor-name: --omkar-anchor;
+ }
+
+ main {
      display: flex;
      justify-content: center;
      align-items: center;
-     anchor-name: --omkar-anchor;
+     padding: 20px 0;
+ }
+
+ .nav-wraper {
+     width: fit-content;
+     display: flex;
  }
 
  a {
@@ -34,27 +47,31 @@
      border-radius: 8px;
      color: #fff;
      font-weight: 500;
+     transition: all 0.3s linear;
  }
 
- /* .red {
-     background-color: red;
+ .nav-wraper:has(.box:hover) a {
+     color: #272727;
  }
 
- .blue {
-     background-color: blue;
+ .box:hover a {
+     color: #fff !important;
  }
-
- .green {
-     background-color: green;
- } */
 
  .box:hover {
      anchor-name: --omkar-anchor;
  }
 
  .anchor {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     --hover: 7vw;
+     font-size: var(--hover);
+     transition: font-size 0.3s linear;
      background-color: #272727;
      border-radius: 8px;
+     opacity: 1;
      pointer-events: none;
      /* mix-blend-mode: exclusion; */
      position: fixed;
@@ -65,4 +82,8 @@
      right: anchor(right);
      transition: all 0.3s linear;
      z-index: -1;
+ }
+
+ .nav-wraper:hover .anchor {
+     --hover: 0vw;
  }
